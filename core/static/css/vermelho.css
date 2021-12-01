@@ -1,0 +1,28 @@
+
+
+:root {
+    --bs-danger: #ed4e30;
+    --bs-vermelho-rgb: 237, 78, 48
+  }
+
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-vermelho-rgb), var(--bs-text-opacity)) !important;
+  }
+
+  a {
+    color: #ed4e30;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #ed4e30;
+  }
+
+  #sideNav {
+   background-color: #ed4e30;
+  }
+  .social-icons .social-icon:hover {
+    background-color: #ed4e30;
+  }

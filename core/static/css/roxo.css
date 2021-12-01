@@ -1,0 +1,26 @@
+
+
+:root {
+    --bs-roxo-rgb: 148, 59, 169
+  }
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-roxo-rgb), var(--bs-text-opacity)) !important;
+  }
+
+  a {
+    color: #943ba9;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #943ba9;
+  }
+
+  #sideNav {
+   background-color: #943ba9;
+  }
+  .social-icons .social-icon:hover {
+    background-color: #943ba9;
+  }

@@ -1,0 +1,80 @@
+{% load bootstrap4 %}
+{% include 'components/base.html' %}
+{% load static %}
+{% bootstrap_css %}
+<!-- Page Header-->
+{% for inic in inicio %}
+{% if inic.ativo == True %}
+<header class="masthead" style="background-image: url('{{inic.imagem.url}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>{{ inic.cabecalho }}</h1>
+                    <span class="subheading">{{ inic.subtitulo }}</span>
+                    {% else %}
+                    <header class="masthead" style="background-image: url('{% static 'imagem/painel.jpg' %}')">
+                        <div class="container position-relative px-4 px-lg-5">
+                            <div class="row gx-4 gx-lg-5 justify-content-center">
+                                <div class="col-md-10 col-lg-8 col-xl-7">
+                                    <div class="site-heading">
+
+                                        <h1>Insira o cabeçalho aqui</h1>
+                                        <span class="subheading">Insira o subtitulo aqui</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </header>
+                    {% endfor %}
+                    <!-- Main Content-->
+                    <div class="container px-4 px-lg-5">
+                        <div class="row gx-4 gx-lg-5 justify-content-center">
+                            <div class="col-md-10 col-lg-8 col-xl-7">
+                                {% for postagem in postagens %}
+                                {% if postagem.ativo == True %}
+                                <!-- Post preview-->
+                                <div class="post-preview">
+                                    <a href="post.html">
+                                        <h2 class="post-title"><a href="#modal{{postagem.slug}}"
+                                                data-toggle="modal">{{ postagem.titulo }}</a></h2>
+
+                                        <!--<h3 class="post-subtitle"> {{ postage.body }}</h3>-->
+                                    </a>
+                                    {{ postagem.body | linebreaks | truncatewords:20 }}
+                                    <p class="post-meta">
+                                        Publicado em {{ postagem.criado }} por {{ postagem.autor}}
+                                    </p>
+                                </div>
+
+                                <div class="modal fade bd-example-modal-lg show" id="modal{{postagem.slug}}"
+                                    role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <b>{{ postagem.titulo }}</b>
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" id="dynamic-content">
+                                                {{ postagem.body}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                <!-- Divider-->
+                                <hr class="my-4" />
+                                <!-- Pager
+                                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
+                                        href="#!">Posts mais antigos →</a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                    {% bootstrap_javascript jquery='full' %}
+                    <!-- Footer-->
+                    {% include 'components/footer.html' %}

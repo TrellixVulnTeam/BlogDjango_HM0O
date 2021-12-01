@@ -1,0 +1,57 @@
+{% load bootstrap4 %}
+{% include 'components/base.html' %}
+{% load static %}
+{% bootstrap_css %}
+<!-- Page Header-->
+{% for sob in sobre %}
+{% if sob.ativo == True %}
+<header class="masthead" style="background-image: url('{{ sob.imagem.url }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>{{ sob.titulo }}</h1>
+                    <span class="subheading">{{ sob.subtitulo }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>{{ sob.texto }}</p>
+            </div>
+        </div>
+    </div>
+</main>
+{% else %}
+<header class="masthead" style="background-image: url('{% static 'imagem/sobre.jpg' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Insira o titulo aqui</h1>
+                    <span class="subheading">Insira o subtitulo aqui</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Insira o texto aqui</p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endif %}
+{% endfor %}
+<!-- Footer-->
+{% bootstrap_javascript jquery='full' %}
+{% include 'components/footer.html' %}

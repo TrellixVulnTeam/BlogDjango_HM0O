@@ -1,0 +1,28 @@
+
+
+:root {
+    --bs-pink: #d63384;
+    --bs-pink-rgb: 255, 0, 204
+  }
+
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-pink-rgb), var(--bs-text-opacity)) !important;
+  }
+
+  a {
+    color: #d63384;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #d63384;
+  }
+
+  #sideNav {
+   background-color: #d63384;
+  }
+  .social-icons .social-icon:hover {
+    background-color: #d63384;
+  }

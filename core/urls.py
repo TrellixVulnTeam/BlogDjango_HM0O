@@ -1,11 +1,12 @@
 from django.urls import path
 
-from .views import index
+from .views import index, contact, about, post
 
 #app_name = "blog"
 
 urlpatterns = [
-    path('', index),
-    #path("", views.PostListView.as_view(), name="list"),
-    #path("<slug:slug>/", views.PostDetaiView.as_view(), name="detail")
+    path('', index, name='index'),
+    path('contato/', contact, name='contato'),
+    path('sobre/', about, name='sobre'),
+    path('postagem/', post, name='postagem'),
 ]

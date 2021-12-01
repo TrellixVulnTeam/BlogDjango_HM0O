@@ -18,9 +18,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.views.static import serve
 from django.conf.urls import url
+from rest_framework import routers, serializers, viewsets
+from core.api import viewsets as postviewset
+
+
+route = routers.DefaultRouter()
+route.register(r'api', postviewset.PostViewSet, basename="Api")
 
 urlpatterns = [
     path('painel/', admin.site.urls),
     path('', include('core.urls')),
+    path('', include(route.urls)),
+
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]

@@ -1,0 +1,28 @@
+
+
+:root {
+    --bs-secondary: #6c757d;
+    --bs-secondary-rgb: 108, 117, 125;
+  }
+
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
+  }
+
+  a {
+    color: #6c757d;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #6c757d;
+  }
+
+  #sideNav {
+   background-color: #6c757d;
+  }
+  .social-icons .social-icon:hover {
+    background-color: #6c757d;
+  }

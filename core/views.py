@@ -1,16 +1,41 @@
 from django.shortcuts import render
-from blog.models import Post
-from pagina.models import Pagina, Social, Cores
+from .models import Inicio, Social, Sobre, Contato, Post
+from .forms import ContatoForm
 
 def index(request):
-    pagina = Pagina.objects.all()
-    lista = Post.objects.all()
+    inicio = Inicio.objects.all()
+    postagens = Post.objects.all()
     social = Social.objects.all()
-    cores = Cores.objects.all()
     context = {
-        'lista': lista,
-        'pagina': pagina,
+        'postagens': postagens,
+        'inicio': inicio,
         'social': social,
-        'cores': cores,
     }
     return render(request, 'index.html', context)  
+
+def contact(request):
+    inicio = Inicio.objects.all()
+    contato = Contato.objects.all()
+    social = Social.objects.all()
+    form = ContatoForm()
+    context = {
+        'form': form,
+        'contato': contato,
+        'inicio': inicio,
+        'social': social,
+    }
+    return render(request, 'contact.html', context)  
+
+def about(request):
+    inicio = Inicio.objects.all()
+    sobre = Sobre.objects.all()
+    social = Social.objects.all()
+    context = {
+        'sobre': sobre,
+        'inicio': inicio,
+        'social': social,
+    }
+    return render(request, 'about.html', context)      
+
+def post(request):
+    return render(request, 'api/api.html')  

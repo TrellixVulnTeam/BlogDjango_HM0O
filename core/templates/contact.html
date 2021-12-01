@@ -1,0 +1,65 @@
+{% load bootstrap4 %}
+{% include 'components/base.html' %}
+{% load static %}
+{% bootstrap_css %}
+<!-- Page Header-->
+{% for cont in contato %}
+{% if cont.ativo == True %}
+<header class="masthead" style="background-image: url('{{ cont.imagem.url }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>{{ cont.titulo }}</h1>
+                    <span class="subheading">{{ cont.subtitulo }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+{% else %}
+<header class="masthead" style="background-image: url('{% static 'imagem/contato.jpg' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Insira o titulo aqui</h1>
+                    <span class="subheading">Insira o subtitulo aqui</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endif %}
+{% endfor %}
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {% for cont in contato %}
+                {% if cont.ativo == True %}
+                <p>{{ cont.texto }}</p>
+                {% endif %}
+                {% endfor %}
+                <!-- Main Content-->
+                <main class="mb-4">
+                    <div class="container px-4 px-lg-5">
+                        <div class="row gx-4 gx-lg-5 justify-content-center">
+                            <div class="container">
+                                <h1>Contato</h1>
+                                {% bootstrap_messages %}
+
+                                <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">
+                                    {% csrf_token %}
+                                    {% bootstrap_form form %}
+                                    {% buttons %}
+                                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                                    {% endbuttons %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                {% bootstrap_javascript jquery='full' %}
+                {% include 'components/footer.html' %}
